@@ -9,51 +9,71 @@
     <title>Movie Hub</title>
 </head>
 
-<body class="bg-slate-950">
-    <nav class="flex bg-slate-950  justify-between max-w-6xl m-auto p-4 ">
+<body class="bg-slate-950 overflow-y-scroll relative">
+    <nav class="flex bg-slate-950 justify-between max-w-6xl m-auto p-4 items-center relative">
 
         <div>
-            <span class="flex leading-none text-white text-2xl  gap-2 font-bold "> <svg class="w-7 h-7 text-red-600"
-                    fill="currentColor" viewBox="0 0 24 24">
-                    <path
-                        d="M4 4h16a2 2 0 012 2v12a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2zm0 2v3h2.5l1.5-3H4zm4.5 0l-1.5 3h3l1.5-3H8.5zm5 0l-1.5 3h3l1.5-3h-3zm5 0l-1.5 3H20V6h-1.5zM4 11v7h16v-7H4z" />
-                </svg> Movie Hub</span>
+            <span class="flex leading-none text-white text-2xl gap-2 font-bold"> 
+                <svg class="w-7 h-7 text-red-600" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M4 4h16a2 2 0 012 2v12a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2zm0 2v3h2.5l1.5-3H4zm4.5 0l-1.5 3h3l1.5-3H8.5zm5 0l-1.5 3h3l1.5-3h-3zm5 0l-1.5 3H20V6h-1.5zM4 11v7h16v-7H4z" />
+                </svg> Movie Hub
+            </span>
         </div>
 
-        <div class="flex gap-5 font-medium text-sm ">
-            <a class="text-slate-300 text-md" href="">Home</a>
-            <a class="text-slate-300 text-md" href="">About</a>
-            <a class="text-slate-300 text-md" href="">Search</a>
+        <!-- Desktop Navigation Content -->
+        <div id="navContent" class="hidden space-x-8 md:flex font-medium text-sm">
+            <a class="text-slate-300 text-md hover:text-red-500" href="">Home</a>
+            <a class="text-slate-300 text-md hover:text-red-500" href="">About</a>
+            <a class="text-slate-300 text-md hover:text-red-500" href="#movieForm">Search</a>
         </div>
+
+        <!-- Mobile Dropdown Menu Options (Centered layout with gap-10 applied) -->
+        <div id="options" class="hidden flex-col items-center justify-center md:hidden absolute top-16 left-0 right-0 bg-zinc-950/95 backdrop-blur-lg border-b border-zinc-800 px-6 py-8 gap-10 shadow-xl z-50">
+            <a href="index.html" class="text-zinc-300 hover:text-red-500 font-medium text-base transition-colors">Home</a>
+            <a href="#about" class="text-zinc-300 hover:text-red-500 font-medium text-base transition-colors">About</a>
+            <a href="#search" class="text-zinc-300 hover:text-red-500 font-medium text-base transition-colors">Search</a>
+        </div>
+
+        <!-- Hamburger Button -->
+        <button id="hamburger" class="md:hidden p-2 rounded-lg text-zinc-400 hover:text-white hover:bg-zinc-900 cursor-pointer focus:outline-none" aria-label="Toggle navigation menu">
+            <svg id="hamburgerIcon" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+        </button>
 
     </nav>
     <h1 class="border border-white/9"></h1>
     <main>
-        <div class="text-center  ">
-            <h1
-                class="inline-block mt-10 px-3.5 py-1 mb-4 text-xs font-semibold tracking-wider text-red-400 uppercase bg-red-950/40 border border-red-800/40 rounded-full">
+        <div class="text-center">
+            <h1 class="inline-block mt-10 px-3.5 py-1 mb-4 text-xs font-semibold tracking-wider text-red-400 uppercase bg-red-950/40 border border-red-800/40 rounded-full">
                 Unlimited Movies & Shows</h1>
             <h1 class="text-3xl sm:text-4xl lg:text-6xl font-extrabold tracking-tight text-white mb-4 leading-tight">
-                Discover Your Next <br><span
-                    class="bg-gradient-to-r from-red-500 to-amber-500 text-transparent bg-clip-text">Favorite
-                    Film</span></h1>
-            <h1 class="text-slate-400 text-sm sm:text-base lg:text-lg mb-8 max-w-xl mx-auto">Search through thousands of movies, check release years, and explore details instantly in one place.
-
-            </h1>
+                Discover Your Next <br><span class="bg-gradient-to-r from-red-500 to-amber-500 text-transparent bg-clip-text">Favorite Film</span></h1>
+            <h1 class="text-slate-400 text-sm sm:text-base lg:text-lg mb-8 max-w-xl mx-auto">Search through thousands of movies, check release years, and explore details instantly in one place.</h1>
         </div>
         <div class="flex justify-center">
             <form id="movieForm" action="">
                 <div class="flex gap-3">
-                <input class="w-full bg-slate-900 text-slate-100 placeholder-slate-500 border border-slate-700/80 rounded-xl px-4 py-3 text-sm lg:w-100 sm:text-base outline-none focus:border-red-500 focus:ring-2 focus:ring-red-500/20 transition" id="movieInput" type="text" placeholder="Search movie title (e.g. Inception, The Matrix)...">
-                <button class="bg-red-600 hover:bg-red-700 active:scale-95 text-white font-semibold text-sm sm:text-base px-6 py-3 rounded-xl transition duration-150 shadow-md shadow-red-600/20 cursor-pointer">Search</button>
+                    <input class="w-full bg-slate-900 text-slate-100 placeholder-slate-500 border border-slate-700/80 rounded-xl px-4 py-3 text-sm lg:w-100 sm:text-base outline-none focus:border-red-500 focus:ring-2 focus:ring-red-500/20 transition" id="movieInput" type="text" placeholder="Search movie title (e.g. Inception, The Matrix)...">
+                    <button class="bg-red-600 hover:bg-red-700 active:scale-95 text-white font-semibold text-sm sm:text-base px-6 py-3 rounded-xl transition duration-150 shadow-md shadow-red-600/20 cursor-pointer">Search</button>
                 </div>
             </form>
         </div>
 
-        <div id="movieHub" class="max-w-6xl m-auto cursor-pointer  pt-8 grid grid-cols-1 min-[420px]:grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-6">
-            
-    </div>
+        <div id="movieHub" class="max-w-6xl m-auto cursor-pointer pt-8 grid grid-cols-1 min-[420px]:grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-6"></div>
     </main>
+    <footer class="border-t border-zinc-900 py-8 bg-zinc-950 text-center text-sm text-zinc-500 mt-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-2">
+                <svg class="w-5 h-5 text-red-600" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M4 4h16a2 2 0 012 2v12a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2zm0 2v3h2.5l1.5-3H4zm4.5 0l-1.5 3h3l1.5-3H8.5zm5 0l-1.5 3h3l1.5-3h-3zm5 0l-1.5 3H20V6h-1.5zM4 11v7h16v-7H4z"/>
+                </svg>
+                <span class="font-semibold text-zinc-300">MovieHub</span>
+            </div>
+            <p>&copy; 2026 MovieHub. All rights reserved.</p>
+        </div>
+    </footer>
+
     <script src="script.js"></script>
 </body>
 
