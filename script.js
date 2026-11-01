@@ -26,7 +26,7 @@ async function searchMovies(movieName) {
   class="w-10 h-10 border-4 border-t-amber-500 border-gray-300 rounded-full animate-spin"
 ></div>
 `
-    let response = await fetch(`http://www.omdbapi.com/?apikey=adae67f0&s=${encodeURIComponent(movieName)}`);
+    let response = await fetch(`https://www.omdbapi.com/?apikey=adae67f0&s=${encodeURIComponent(movieName)}`);
     let data = await response.json();
     if (data.Response === "True") {
         displayMovie(data.Search);
